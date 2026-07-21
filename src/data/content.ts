@@ -218,6 +218,7 @@ export const projects: Project[] = [
       'Enterprise QR-powered asset registry for Ikeja Electric. Field teams scan QR tags on distribution and power transformers to instantly pull verified asset details, while command centres get real-time scan analytics and geospatial operational intelligence.',
     tags: ['Next.js', 'TypeScript', 'Supabase', 'React-Leaflet', 'QR', 'RBAC'],
     liveUrl: 'https://ie-smart-assets.vercel.app/dashboard',
+    repoUrl: 'https://github.com/collins-geodev/ie-smart-assets',
     metrics: [
       { value: 'DT + PT', label: 'Asset classes' },
       { value: 'Real-time', label: 'Scan analytics' },
