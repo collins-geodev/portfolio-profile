@@ -40,8 +40,8 @@ export const profile = {
 
 export const contact = {
   email: 'collins.tochi@gmail.com',
-  phone: '+1 (825) 936-9826',
-  phoneHref: '+18259369826',
+  phone: '+23408062172134',
+  phoneHref: '+23408062172134',
   location: 'Open to Relocation · Remote-ready',
   linkedin: 'https://linkedin.com/in/collinsanyanwu',
   linkedinLabel: 'linkedin.com/in/collinsanyanwu',
