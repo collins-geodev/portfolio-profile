@@ -200,6 +200,7 @@ export interface Project {
   metrics?: Metric[]
   features?: string[]
   liveUrl?: string
+  repoUrl?: string
   accent: 'cyan' | 'violet' | 'emerald'
 }
 
@@ -243,6 +244,7 @@ export const projects: Project[] = [
       'Enterprise asset-monitoring platform tracking 20,641+ distribution transformers, 21,560 network features and 16,127 upriser / feeder-pillar records across 23 geospatial data layers — with a natural-language Data Intelligence Assistant.',
     tags: ['Next.js', 'TypeScript', 'Supabase', 'React-Leaflet', 'Recharts', 'PostGIS'],
     liveUrl: 'https://ie-asset-dashboard.vercel.app/',
+    repoUrl: 'https://github.com/Collins76/IE-Asset-Dashboard',
     metrics: [
       { value: '20,641+', label: 'Transformers' },
       { value: '23', label: 'Data layers' },
@@ -265,9 +267,10 @@ export const projects: Project[] = [
     accent: 'emerald',
     tagline: 'Field-enumeration monitoring across vendors & feeders',
     description:
-      'Third-generation asset-tagging monitor tracking poles, distribution transformers, feeders and buildings across multiple vendors and 20 Shomolu feeders — with run-rate velocity, field-officer performance and pole-health reconciliation.',
-    tags: ['JavaScript', 'Leaflet.js', 'Chart.js', 'AI Assistant', 'HTML/CSS'],
+      'Third-generation asset-tagging monitor tracking poles, distribution transformers, feeders and buildings across multiple vendors and 20 Shomolu feeders — now backed by a real-time Convex database with run-rate velocity, field-officer performance and pole-health reconciliation.',
+    tags: ['JavaScript', 'Convex', 'Leaflet.js', 'Chart.js', 'AI Assistant'],
     liveUrl: 'https://idb-assets-dashboard-v3.vercel.app/',
+    repoUrl: 'https://github.com/collins-geodev/IDB-Dashboard-v3',
     metrics: [
       { value: '20', label: 'Shomolu feeders' },
       { value: 'Run-rate', label: 'Velocity KPI' },
@@ -282,6 +285,32 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: 'ie-asset-dashboard-v2',
+    title: 'IE Asset Dashboard 2.0',
+    category: 'Dashboards & BI',
+    preview: 'asset',
+    accent: 'cyan',
+    tagline: 'Full-stack Next.js rebuild for 20,000+ transformers',
+    description:
+      'Full-stack Next.js rebuild of the asset-monitoring platform — richer analytics, faster server-rendered views and modernised UI for 20,000+ distribution transformers across the Ikeja Electric network.',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'Recharts'],
+    liveUrl: 'https://ie-asset-dashboard-v2.vercel.app',
+    repoUrl: 'https://github.com/Collins76/ie-asset-dashboard-v2',
+  },
+  {
+    id: 'idb-v2',
+    title: 'IDB 2.0 Assets Tracking Dashboard',
+    category: 'Dashboards & BI',
+    preview: 'idb',
+    accent: 'violet',
+    tagline: 'Second-generation field asset-tagging monitor',
+    description:
+      'Second-generation IDB assets-tracking monitor — the deployed predecessor to V3, tracking field enumeration of poles, transformers and buildings with vendor progress analytics and interactive mapping.',
+    tags: ['JavaScript', 'Leaflet.js', 'Chart.js', 'HTML/CSS'],
+    liveUrl: 'https://idb-monitor.vercel.app',
+    repoUrl: 'https://github.com/Collins76/IDB-2.0-Assets-Tracking-Dashboard-V2',
+  },
+  {
     id: 'gis-kpis',
     title: 'GIS KPIs Dashboard',
     category: 'Dashboards & BI',
@@ -291,6 +320,7 @@ export const projects: Project[] = [
     description:
       'Real-time GIS team performance dashboard tracking operational KPIs, task-completion rates and field productivity metrics, with 250+ commits of active development.',
     tags: ['Next.js', 'Firebase', 'TypeScript', 'Tailwind CSS'],
+    repoUrl: 'https://github.com/Collins76/GIS-KPIs-Dashboard',
   },
   {
     id: 'nigeria-econ',
@@ -302,6 +332,8 @@ export const projects: Project[] = [
     description:
       'Interactive macroeconomic dashboard visualising 24+ indicators — GDP, inflation, FX rates, oil production, stock-market data and correlation analysis.',
     tags: ['React', 'TypeScript', 'Vite', 'Recharts'],
+    liveUrl: 'https://nigeria-economic-dashboard.vercel.app',
+    repoUrl: 'https://github.com/Collins76/Nigeria-Economic-Dashboard',
   },
   {
     id: 'dt-vandalization',
@@ -313,6 +345,7 @@ export const projects: Project[] = [
     description:
       'Operational Power BI dashboard tracking distribution-transformer vandalization incidents with geographic mapping, status tracking and temporal trend analysis.',
     tags: ['Power BI', 'QGIS', 'DAX', 'Excel'],
+    repoUrl: 'https://github.com/Collins76/Power-BI-Dashboard-for-Tracking-DT-Vandalization',
   },
   {
     id: 'upriser-inspections',
@@ -324,6 +357,7 @@ export const projects: Project[] = [
     description:
       'Power BI dashboard monitoring 8,513+ upriser field inspections across Lagos with geographic mapping, field-officer performance tracking and business-unit comparisons.',
     tags: ['Power BI', 'DAX', 'CSV', 'Survey123'],
+    repoUrl: 'https://github.com/Collins76/DT-Uprisers-Feeder-Pillars-Power-BI-Project',
   },
   {
     id: 'feeder-extraction',
@@ -346,6 +380,19 @@ export const projects: Project[] = [
     description:
       'Nigerian health-data analysis with Jupyter notebooks, technical reports and policy recommendations — combining data science with actionable implementation roadmaps.',
     tags: ['Python', 'Jupyter', 'Pandas', 'Matplotlib'],
+    repoUrl: 'https://github.com/Collins76/Heath_Data_Insights_Analyses',
+  },
+  {
+    id: 'ecs-build-guardian',
+    title: 'ECS Build-Agent Guardian',
+    category: 'Python & Automation',
+    preview: 'generic',
+    accent: 'cyan',
+    tagline: 'Hybrid-cloud CI/CD instance protection',
+    description:
+      'DevOps automation that monitors Azure DevOps agents running in Docker and prevents AWS ECS instance termination mid-build — protecting hybrid-cloud CI/CD pipelines with container-lifecycle heartbeats and spot-instance safeguards.',
+    tags: ['Docker', 'AWS ECS', 'Azure DevOps', 'Python'],
+    repoUrl: 'https://github.com/Collins76/ecsazrlc',
   },
   {
     id: 'prompt-genius',
@@ -357,6 +404,8 @@ export const projects: Project[] = [
     description:
       'AI-powered prompt optimisation, evaluation and management tool with a prompt library, templates, context snippets and activity history.',
     tags: ['Next.js', 'TypeScript', 'Supabase', 'OpenAI API'],
+    liveUrl: 'https://prompt-genius-two.vercel.app',
+    repoUrl: 'https://github.com/Collins76/prompt-genius',
   },
   {
     id: 'cv-expert',
@@ -366,8 +415,23 @@ export const projects: Project[] = [
     accent: 'emerald',
     tagline: 'ATS-aware resume analyzer & career optimizer',
     description:
-      'AI-powered resume analyzer that scores CVs, surfaces improvement opportunities and tailors content for ATS screening systems.',
+      'AI-powered resume analyzer that scores CVs, surfaces improvement opportunities and tailors content for ATS screening systems — in an animated dark-theme interface.',
     tags: ['JavaScript', 'AI APIs', 'HTML/CSS'],
+    liveUrl: 'https://cv-expert-ai.vercel.app',
+    repoUrl: 'https://github.com/Collins76/cv-expert-ai',
+  },
+  {
+    id: 'cv-genius',
+    title: 'CV Genius',
+    category: 'AI & Productivity',
+    preview: 'generic',
+    accent: 'violet',
+    tagline: 'AI-assisted CV builder & optimizer',
+    description:
+      'AI-assisted CV builder and optimizer that helps craft, structure and refine professional resumes with intelligent content suggestions.',
+    tags: ['TypeScript', 'Next.js', 'AI APIs'],
+    liveUrl: 'https://cv-genius-beta.vercel.app',
+    repoUrl: 'https://github.com/Collins76/cv_genius',
   },
   {
     id: 'nexus-calc',
@@ -375,10 +439,25 @@ export const projects: Project[] = [
     category: 'AI & Productivity',
     preview: 'generic',
     accent: 'violet',
-    tagline: 'Voice-enabled smart scientific calculator',
+    tagline: 'Voice-enabled smart calculator with 10 themes',
     description:
-      'AI-enhanced smart calculator with scientific functions, unit converters and hands-free voice commands in a sleek animated interface.',
+      'Smart AI-powered calculator with currency & metric converters, hands-free voice commands, 10 switchable themes and a natural-language math assistant.',
     tags: ['JavaScript', 'Web Speech API', 'HTML/CSS'],
+    liveUrl: 'https://nexus-calculator-ten.vercel.app',
+    repoUrl: 'https://github.com/collins-geodev/nexus-calculator',
+  },
+  {
+    id: 'scientific-calculator',
+    title: 'Scientific Calculator',
+    category: 'AI & Productivity',
+    preview: 'generic',
+    accent: 'emerald',
+    tagline: 'Full-function scientific computing in the browser',
+    description:
+      'Feature-rich scientific calculator covering trigonometric, logarithmic and exponential functions with a clean, responsive TypeScript interface.',
+    tags: ['TypeScript', 'React', 'HTML/CSS'],
+    liveUrl: 'https://scientific-calculator-three-psi.vercel.app',
+    repoUrl: 'https://github.com/Collins76/scientific-calculator',
   },
 ]
 

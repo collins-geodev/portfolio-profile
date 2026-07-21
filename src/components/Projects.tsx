@@ -1,6 +1,6 @@
 import { forwardRef, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowUpRight, Check, Star, ExternalLink, Layers3 } from 'lucide-react'
+import { ArrowUpRight, Check, Star, ExternalLink, Github, Layers3 } from 'lucide-react'
 import {
   projects,
   projectFilters,
@@ -95,17 +95,30 @@ function FeaturedShowcase({ project, index }: { project: Project; index: number 
             ))}
           </div>
 
-          {project.liveUrl && (
-            <div className="mt-6">
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-primary group/btn"
-              >
-                Open Live App
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-              </a>
+          {(project.liveUrl || project.repoUrl) && (
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-primary group/btn"
+                >
+                  Open Live App
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                </a>
+              )}
+              {project.repoUrl && (
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-ghost"
+                >
+                  <Github className="h-4 w-4" />
+                  View Code
+                </a>
+              )}
             </div>
           )}
         </div>
@@ -137,17 +150,30 @@ const ProjectCard = forwardRef<HTMLElement, { project: Project }>(({ project }, 
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-start justify-between gap-3">
           <h4 className="font-display text-lg font-semibold text-white">{project.title}</h4>
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={`shrink-0 rounded-lg border border-white/10 p-1.5 text-slate-400 transition-colors hover:text-white ${accentBorder[project.accent]}`}
-              aria-label={`Open ${project.title}`}
-            >
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          )}
+          <div className="flex shrink-0 items-center gap-1.5">
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={`rounded-lg border border-white/10 p-1.5 text-slate-400 transition-colors hover:text-white ${accentBorder[project.accent]}`}
+                aria-label={`View ${project.title} source code on GitHub`}
+              >
+                <Github className="h-4 w-4" />
+              </a>
+            )}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={`rounded-lg border border-white/10 p-1.5 text-slate-400 transition-colors hover:text-white ${accentBorder[project.accent]}`}
+                aria-label={`Open ${project.title} live app`}
+              >
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            )}
+          </div>
         </div>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-400">{project.description}</p>
         <div className="mt-4 flex flex-wrap gap-1.5">
@@ -242,6 +268,33 @@ export function Projects() {
               ))}
             </AnimatePresence>
           </motion.div>
+
+          {/* GitHub profiles CTA */}
+          <Reveal className="mt-14 text-center">
+            <p className="text-sm text-slate-400">
+              More builds, experiments and source code live on my GitHub profiles:
+            </p>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="https://github.com/collins-geodev"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-ghost"
+              >
+                <Github className="h-4 w-4" />
+                @collins-geodev
+              </a>
+              <a
+                href="https://github.com/Collins76"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-ghost"
+              >
+                <Github className="h-4 w-4" />
+                @Collins76
+              </a>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
