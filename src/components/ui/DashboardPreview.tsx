@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import { QrCode, ScanLine, MapPin, Layers, Database, Bot, TrendingUp } from 'lucide-react'
 import type { PreviewKind } from '../../data/content'
@@ -14,10 +14,15 @@ const accentHex: Record<string, { a: string; b: string }> = {
 export function BrowserChrome({
   url,
   accent = 'cyan',
+  flush = false,
+  bodyStyle,
   children,
 }: {
   url: string
   accent?: 'cyan' | 'violet' | 'emerald'
+  /** Drop the preview padding and 16:10 ratio -- for live embeds that size themselves. */
+  flush?: boolean
+  bodyStyle?: CSSProperties
   children: ReactNode
 }) {
   const c = accentHex[accent]
@@ -34,7 +39,14 @@ export function BrowserChrome({
           <span className="truncate font-mono text-[11px] text-slate-400">{url}</span>
         </div>
       </div>
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-br from-ink-900 to-ink-950 p-3.5 sm:p-4">
+      <div
+        className={`relative w-full overflow-hidden ${
+          flush
+            ? 'bg-ink-950'
+            : 'aspect-[16/10] bg-gradient-to-br from-ink-900 to-ink-950 p-3.5 sm:p-4'
+        }`}
+        style={bodyStyle}
+      >
         {children}
       </div>
     </div>
@@ -118,9 +130,8 @@ function MiniMap({ accent, dots = 7 }: { accent: 'cyan' | 'violet' | 'emerald'; 
           <motion.circle
             cx={p.x}
             cy={p.y}
-            r="4.5"
             fill={c.a}
-            opacity="0.25"
+            initial={{ r: 3, opacity: 0.25 }}
             animate={{ r: [3, 6, 3], opacity: [0.25, 0, 0.25] }}
             transition={{ duration: 2.4, repeat: Infinity, delay: p.d }}
           />

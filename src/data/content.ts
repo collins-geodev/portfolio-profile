@@ -584,14 +584,29 @@ export const certifications = [
 export const survey = {
   itemId: 'ce6c0c1fe225452585955407984735da',
   title: 'IE LT Network Survey',
-  tagline: 'ArcGIS Survey123 · live field data capture',
+  category: 'Field Data Capture',
+  tagline: 'Live Survey123 form for low-tension network capture',
   description:
-    'The live Survey123 form field crews use to capture low-tension network assets — pole, transformer and service-point attributes, photos and GPS coordinates flow straight into the enterprise geodatabase powering the dashboards above.',
-  highlights: [
-    'Geolocation & camera capture from any device',
-    'Validated schema that matches the enterprise geodatabase',
-    'Works offline in the field, syncs when back online',
+    'The production form field crews run at the pole. Officer and network details, pole ' +
+    'identification, condition grading and conductor sizing are captured across four ' +
+    'validated pages, with a GPS fix and photo evidence attached before the crew moves ' +
+    'on — straight into the enterprise geodatabase behind the dashboards above.',
+  /** Survey123 chrome stripped so the form sits inside the site's own frame. */
+  hide: 'navbar,header,description,footer',
+  metrics: [
+    { value: '4', label: 'Guided pages' },
+    { value: '8,500+', label: 'Inspections' },
+    { value: '45%', label: 'Faster capture' },
   ],
+  features: [
+    'GPS fix captured at the pole',
+    'Photo evidence from any device',
+    'Cascading BU / feeder / DT pickers',
+    'Required fields gate each page',
+    'Offline capture, syncs on reconnect',
+    'Writes to the enterprise geodatabase',
+  ],
+  tags: ['ArcGIS Survey123', 'ArcGIS Online', 'Feature Services', 'Geodatabase', 'Field Ops'],
   /** Origins the embedded web form may post resize messages from. */
   allowedOrigins: ['https://survey123.arcgis.app', 'https://survey123.arcgis.com'],
 }

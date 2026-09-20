@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
-import { Check, ExternalLink, Loader2, MapPinned } from 'lucide-react'
+import { ArrowUpRight, Check, Loader2, Radio } from 'lucide-react'
 import { survey } from '../data/content'
 import { SectionHeading } from './ui/SectionHeading'
 import { Reveal } from './ui/Reveal'
+import { BrowserChrome } from './ui/DashboardPreview'
 
+/** Full form, for the "open in a new tab" links. */
 const formUrl = `https://survey123.arcgis.com/share/${survey.itemId}`
+/** Embedded form, with Survey123's own header/navbar/footer stripped. */
+const embedUrl = `${formUrl}?hide=${survey.hide}&width=1`
 
 interface WebFormMessage {
   event?: string
@@ -18,8 +22,7 @@ export function Survey() {
   const [height, setHeight] = useState<number | null>(null)
   const [loaded, setLoaded] = useState(false)
 
-  /* The web form posts its rendered height back to us so the iframe can grow
-     to fit the questions instead of scrolling inside a fixed box. */
+  /* If the web form ever posts its rendered height back, grow to fit it. */
   useEffect(() => {
     const onMessage = (event: MessageEvent) => {
       if (!survey.allowedOrigins.includes(event.origin)) return
@@ -49,79 +52,116 @@ export function Survey() {
           eyebrow="Live Field Tool"
           title={
             <>
-              Capture network assets with <span className="text-gradient">Survey123</span>
+              Field capture that feeds the <span className="text-gradient">geodatabase</span>
             </>
           }
-          subtitle={survey.description}
+          subtitle="The same Survey123 form crews run at the pole, embedded and live — fill it in right here."
         />
 
-        <Reveal className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-2">
-          {survey.highlights.map((h) => (
-            <span key={h} className="chip">
-              <Check className="h-3.5 w-3.5 text-brand-emerald" />
-              {h}
-            </span>
-          ))}
-        </Reveal>
-
-        <Reveal delay={0.1} className="mx-auto mt-10 max-w-4xl">
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-3 shadow-card sm:p-4">
-            {/* Toolbar */}
-            <div className="flex flex-wrap items-center justify-between gap-3 px-2 pb-3 pt-1">
-              <div className="flex items-center gap-2.5">
-                <span className="grid h-9 w-9 place-items-center rounded-xl border border-brand-cyan/30 bg-brand-cyan/10 text-brand-cyan">
-                  <MapPinned className="h-4 w-4" />
-                </span>
-                <div className="leading-tight">
-                  <p className="font-display text-sm font-semibold text-white">{survey.title}</p>
-                  <p className="text-[11px] text-slate-400">{survey.tagline}</p>
-                </div>
-              </div>
-              <a
-                href={formUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-ghost !px-4 !py-2 text-[13px]"
+        <Reveal className="mt-12">
+          <div className="grid grid-cols-1 items-center gap-8 rounded-3xl border border-white/10 bg-white/[0.02] p-5 transition-colors hover:border-brand-emerald/40 sm:p-7 lg:grid-cols-2 lg:gap-12 lg:p-9">
+            {/* Live form */}
+            <div>
+              <BrowserChrome
+                url={`survey123.arcgis.com/share/${survey.itemId.slice(0, 8)}…`}
+                accent="emerald"
+                flush
+                bodyStyle={height ? { height } : { height: 'clamp(380px, 46vh, 500px)' }}
               >
-                <ExternalLink className="h-4 w-4" />
-                Open full screen
-              </a>
+                {!loaded && (
+                  <div className="absolute inset-0 z-10 grid place-items-center bg-ink-900">
+                    <div className="flex flex-col items-center gap-3 text-slate-400">
+                      <Loader2 className="h-5 w-5 animate-spin text-brand-emerald" />
+                      <p className="text-xs">Loading the live form…</p>
+                    </div>
+                  </div>
+                )}
+                {/* Survey123 only ships a light theme and we cannot restyle a
+                    cross-origin document, so the frame is inverted instead. The
+                    hue-rotate puts the hues back where they started, which keeps
+                    the green section headings green while the white page turns
+                    near-black. bg-white is deliberate: it inverts to #141414 and
+                    covers the gap before the form paints. */}
+                <iframe
+                  ref={frameRef}
+                  name="survey123webform"
+                  title={survey.title}
+                  src={embedUrl}
+                  onLoad={() => setLoaded(true)}
+                  className="absolute inset-0 h-full w-full border-0 bg-white"
+                  style={{ filter: 'invert(0.92) hue-rotate(180deg)' }}
+                  allow="geolocation https://survey123.arcgis.com; camera https://survey123.arcgis.com; microphone https://survey123.arcgis.com"
+                />
+              </BrowserChrome>
+
+              <p className="mt-3 text-center text-[11px] text-slate-500">
+                Trouble loading?{' '}
+                <a
+                  href={formUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-brand-emerald hover:underline"
+                >
+                  Open the form in a new tab
+                </a>
+                .
+              </p>
             </div>
 
-            {/* Viewport-sized box; the web form posts its own height when it
-                supports the handshake, in which case we grow to fit exactly. */}
-            <div
-              className="relative w-full overflow-hidden rounded-2xl bg-white"
-              style={height ? { height } : { height: 'min(85vh, 880px)', minHeight: 580 }}
-            >
-              {!loaded && (
-                <div className="absolute inset-0 z-10 grid place-items-center bg-ink-900">
-                  <div className="flex flex-col items-center gap-3 text-slate-400">
-                    <Loader2 className="h-6 w-6 animate-spin text-brand-cyan" />
-                    <p className="text-sm">Loading the survey form…</p>
+            {/* Details */}
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-emerald/30 bg-brand-emerald/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-emerald">
+                  <Radio className="h-3.5 w-3.5" /> Live Form
+                </span>
+                <span className="chip border-brand-emerald/30 bg-brand-emerald/10 text-brand-emerald">
+                  {survey.category}
+                </span>
+              </div>
+
+              <h3 className="mt-4 font-display text-2xl font-bold text-white sm:text-3xl">
+                {survey.title}
+              </h3>
+              <p className="mt-1 text-sm font-medium text-brand-emerald">{survey.tagline}</p>
+              <p className="mt-4 leading-relaxed text-slate-400">{survey.description}</p>
+
+              <div className="mt-5 grid grid-cols-3 gap-3">
+                {survey.metrics.map((m) => (
+                  <div
+                    key={m.label}
+                    className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-center"
+                  >
+                    <div className="font-display text-base font-bold text-white">{m.value}</div>
+                    <div className="text-[11px] text-slate-400">{m.label}</div>
                   </div>
-                </div>
-              )}
-              <iframe
-                ref={frameRef}
-                name="survey123webform"
-                title={survey.title}
-                src={formUrl}
-                onLoad={() => setLoaded(true)}
-                frameBorder={0}
-                className="absolute inset-0 h-full w-full border-0"
-                allow="geolocation https://survey123.arcgis.com; camera https://survey123.arcgis.com; microphone https://survey123.arcgis.com; local-network-access"
-              />
+                ))}
+              </div>
+
+              <ul className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                {survey.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm text-slate-300">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-emerald" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-6 flex flex-wrap items-center gap-2">
+                {survey.tags.map((t) => (
+                  <span key={t} className="chip">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-6">
+                <a href={formUrl} target="_blank" rel="noreferrer" className="btn-primary group/btn">
+                  Open Full Form
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                </a>
+              </div>
             </div>
           </div>
-
-          <p className="mt-4 text-center text-xs text-slate-500">
-            Responses feed the enterprise geodatabase behind the dashboards above. Not loading?{' '}
-            <a href={formUrl} target="_blank" rel="noreferrer" className="text-brand-cyan hover:underline">
-              Open the form in a new tab
-            </a>
-            .
-          </p>
         </Reveal>
       </div>
     </section>
