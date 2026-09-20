@@ -577,10 +577,30 @@ export const certifications = [
   { name: 'GISP Certification', issuer: 'GISCI', year: 'In Progress' },
 ]
 
+/* ------------------------------------------------------------------ */
+/*  Live field-data-collection form (ArcGIS Survey123)                */
+/* ------------------------------------------------------------------ */
+
+export const survey = {
+  itemId: 'ce6c0c1fe225452585955407984735da',
+  title: 'IE LT Network Survey',
+  tagline: 'ArcGIS Survey123 · live field data capture',
+  description:
+    'The live Survey123 form field crews use to capture low-tension network assets — pole, transformer and service-point attributes, photos and GPS coordinates flow straight into the enterprise geodatabase powering the dashboards above.',
+  highlights: [
+    'Geolocation & camera capture from any device',
+    'Validated schema that matches the enterprise geodatabase',
+    'Works offline in the field, syncs when back online',
+  ],
+  /** Origins the embedded web form may post resize messages from. */
+  allowedOrigins: ['https://survey123.arcgis.app', 'https://survey123.arcgis.com'],
+}
+
 export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Survey', href: '#survey' },
   { label: 'Experience', href: '#experience' },
   { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
