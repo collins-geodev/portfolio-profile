@@ -72,7 +72,7 @@ export function Survey() {
                 accent="emerald"
                 flush
                 bodyStyle={{
-                  ...(height ? { height } : { height: 'clamp(380px, 46vh, 500px)' }),
+                  ...(height ? { height } : { height: 'clamp(300px, 36vh, 400px)' }),
                   // The colour the form's white page is mapped onto (see below).
                   background: FORM_BG,
                   // Keep the blend below confined to this box, so it cannot pick
@@ -90,10 +90,12 @@ export function Survey() {
                 )}
                 {/* Survey123 ships no dark theme and the document is cross-origin,
                     so its CSS is out of reach -- the frame is recoloured instead.
-                    invert(1) turns the white page pure black and darkens the text;
-                    hue-rotate puts the hues back where they started, so the green
-                    headings stay green; screen over an opaque backdrop then maps
-                    black to exactly FORM_BG while leaving the light text alone.
+                    invert(1) turns the white page pure black and the dark text
+                    light; hue-rotate puts the hues back where they started, so the
+                    green headings stay green; brightness pushes that light text the
+                    rest of the way to white and, because it multiplies, leaves black
+                    at black; screen over an opaque backdrop then maps that black to
+                    exactly FORM_BG and leaves the white text alone.
                     The negative top crops the theme band above the first question. */}
                 <iframe
                   ref={frameRef}
@@ -105,10 +107,10 @@ export function Survey() {
                   style={{
                     top: -THEME_BAND,
                     height: `calc(100% + ${THEME_BAND}px)`,
-                    filter: 'invert(1) hue-rotate(180deg)',
+                    filter: 'invert(1) hue-rotate(180deg) brightness(1.4)',
                     mixBlendMode: 'screen',
                   }}
-                  allow="geolocation https://survey123.arcgis.com; camera https://survey123.arcgis.com; microphone https://survey123.arcgis.com"
+                  allow="geolocation https://survey123.arcgis.com; camera https://survey123.arcgis.com; microphone https://survey123.arcgis.com; storage-access https://survey123.arcgis.com"
                 />
               </BrowserChrome>
 
