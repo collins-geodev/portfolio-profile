@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import { Menu, X, FileText } from 'lucide-react'
-import { navLinks, contact } from '../data/content'
+import { navLinks, contact, profile } from '../data/content'
 import { useActiveSection } from '../hooks/useActiveSection'
 
 const sectionIds = navLinks.map((l) => l.href.replace('#', ''))
@@ -46,7 +46,7 @@ export function Navbar() {
           </span>
           <span className="hidden flex-col leading-none sm:flex">
             <span className="font-display text-sm font-semibold text-white">Collins Anyanwu</span>
-            <span className="text-[11px] tracking-wide text-slate-400">Database &amp; GIS Administrator</span>
+            <span className="text-[11px] tracking-wide text-slate-400">{profile.title}</span>
           </span>
         </a>
 

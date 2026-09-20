@@ -1,8 +1,8 @@
 # Collins Anyanwu — Portfolio
 
-Personal portfolio of **Collins Anyanwu**, a Database & GIS Administrator with 19+ years
-safeguarding the integrity, security, governance and accessibility of geological, spatial and
-operational data across the utility, oil & gas and geoscience sectors.
+Personal portfolio of **Collins Anyanwu**, a GIS Developer & Enterprise Administrator with 19+
+years across geospatial delivery, enterprise data platforms and automation in energy and
+infrastructure — ArcGIS Enterprise, PostgreSQL/PostGIS, Python and AWS.
 
 🔗 **Live:** https://portfolio-collins-anyanwu.vercel.app
 

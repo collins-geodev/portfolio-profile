@@ -19,8 +19,14 @@ const loadedEvents = ['survey123:webform:formLoaded', 'survey123:onFormLoaded']
 
 /** ink-900 -- the tone the form's page background is recoloured to. */
 const FORM_BG = '#080d1a'
-/** Height of the empty theme band the form leaves above its first question. */
-const THEME_BAND = 30
+/** Small top inset, kept well under the theme band so it never clips the first
+    heading. The rest of the band is covered by the fade below. */
+const TOP_INSET = 8
+/** Fade that hides the theme band. The band's height moves with the frame
+    width, so a fade in FORM_BG is used rather than a fixed crop -- where the
+    band is shorter the fade is invisible against the background, and the
+    heading sits ~44px down, clear of it. */
+const BAND_FADE = 32
 
 export function Survey() {
   const frameRef = useRef<HTMLIFrameElement>(null)
@@ -91,12 +97,12 @@ export function Survey() {
                 {/* Survey123 ships no dark theme and the document is cross-origin,
                     so its CSS is out of reach -- the frame is recoloured instead.
                     invert(1) turns the white page pure black and the dark text
-                    light; hue-rotate puts the hues back where they started, so the
-                    green headings stay green; brightness pushes that light text the
-                    rest of the way to white and, because it multiplies, leaves black
-                    at black; screen over an opaque backdrop then maps that black to
-                    exactly FORM_BG and leaves the white text alone.
-                    The negative top crops the theme band above the first question. */}
+                    light; hue-rotate returns every hue to where it started, which
+                    is what keeps the headings, Submit button and progress bar
+                    green rather than washing them to white; brightness finishes
+                    the body text at white and, because it multiplies, leaves black
+                    at black; screen over an opaque backdrop then maps that black
+                    to exactly FORM_BG and leaves the white text alone. */}
                 <iframe
                   ref={frameRef}
                   name="survey123webform"
@@ -105,12 +111,22 @@ export function Survey() {
                   onLoad={() => setLoaded(true)}
                   className="absolute inset-x-0 w-full border-0"
                   style={{
-                    top: -THEME_BAND,
-                    height: `calc(100% + ${THEME_BAND}px)`,
-                    filter: 'invert(1) hue-rotate(180deg) brightness(1.4)',
+                    top: -TOP_INSET,
+                    height: `calc(100% + ${TOP_INSET}px)`,
+                    filter: 'invert(1) hue-rotate(180deg) brightness(1.35)',
                     mixBlendMode: 'screen',
                   }}
                   allow="geolocation https://survey123.arcgis.com; camera https://survey123.arcgis.com; microphone https://survey123.arcgis.com; storage-access https://survey123.arcgis.com"
+                />
+
+                {/* Covers the theme band, and doubles as a soft scroll edge. */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 top-0 z-[5]"
+                  style={{
+                    height: BAND_FADE,
+                    background: `linear-gradient(to bottom, ${FORM_BG} 75%, transparent)`,
+                  }}
                 />
               </BrowserChrome>
 

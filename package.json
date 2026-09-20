@@ -3,7 +3,7 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
-  "description": "Portfolio of Collins Anyanwu — Database & GIS Administrator | Geospatial & Exploration Data Management",
+  "description": "Portfolio of Collins Anyanwu — GIS Developer & Enterprise Administrator | Spatial Systems & Databases",
   "author": "Collins Anyanwu <polosoft.collins@gmail.com>",
   "scripts": {
     "dev": "vite",
