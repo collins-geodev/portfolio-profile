@@ -19,15 +19,6 @@ const loadedEvents = ['survey123:webform:formLoaded', 'survey123:onFormLoaded']
 
 /** ink-900 -- the tone the form's page background is recoloured to. */
 const FORM_BG = '#080d1a'
-/** Small top inset, kept well under the theme band so it never clips the first
-    heading. The rest of the band is covered by the fade below. */
-const TOP_INSET = 8
-/** Fade that hides the theme band. The band's height moves with the frame
-    width, so a fade in FORM_BG is used rather than a fixed crop -- where the
-    band is shorter the fade is invisible against the background, and the
-    heading sits ~44px down, clear of it. */
-const BAND_FADE = 32
-
 export function Survey() {
   const frameRef = useRef<HTMLIFrameElement>(null)
   const [height, setHeight] = useState<number | null>(null)
@@ -105,32 +96,29 @@ export function Survey() {
                     puts back the chroma that brightness washed out, which is what
                     lets the text go white without the green going with it --
                     saturate does nothing to neutrals. screen over an opaque
-                    backdrop finally maps that black to exactly FORM_BG. */}
+                    backdrop finally maps that black to exactly FORM_BG.
+
+                    saturate is kept low on purpose. Survey123 leaves a band of
+                    theme colour above the first question, and a higher value
+                    turns it into a neon stripe. Nothing crops or covers that
+                    band: its height tracks the frame width and sits only a few
+                    px above the first heading, so every fixed inset tried here
+                    clipped the heading at some width. Muting it is the only
+                    treatment that cannot hide content. */}
                 <iframe
                   ref={frameRef}
                   name="survey123webform"
                   title={survey.title}
                   src={embedUrl}
                   onLoad={() => setLoaded(true)}
-                  className="absolute inset-x-0 w-full border-0"
+                  className="absolute inset-0 h-full w-full border-0"
                   style={{
-                    top: -TOP_INSET,
-                    height: `calc(100% + ${TOP_INSET}px)`,
-                    filter: 'invert(1) hue-rotate(180deg) brightness(1.75) saturate(1.9)',
+                    filter: 'invert(1) hue-rotate(180deg) brightness(1.75) saturate(1.15)',
                     mixBlendMode: 'screen',
                   }}
                   allow="geolocation https://survey123.arcgis.com; camera https://survey123.arcgis.com; microphone https://survey123.arcgis.com; storage-access https://survey123.arcgis.com"
                 />
 
-                {/* Covers the theme band, and doubles as a soft scroll edge. */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-x-0 top-0 z-[5]"
-                  style={{
-                    height: BAND_FADE,
-                    background: `linear-gradient(to bottom, ${FORM_BG} 75%, transparent)`,
-                  }}
-                />
               </BrowserChrome>
 
               <p className="mt-3 text-center text-[11px] text-slate-500">
