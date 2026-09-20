@@ -17,6 +17,11 @@ interface WebFormMessage {
 
 const loadedEvents = ['survey123:webform:formLoaded', 'survey123:onFormLoaded']
 
+/** ink-900 -- the tone the form's page background is recoloured to. */
+const FORM_BG = '#080d1a'
+/** Height of the empty theme band the form leaves above its first question. */
+const THEME_BAND = 30
+
 export function Survey() {
   const frameRef = useRef<HTMLIFrameElement>(null)
   const [height, setHeight] = useState<number | null>(null)
@@ -66,7 +71,14 @@ export function Survey() {
                 url={`survey123.arcgis.com/share/${survey.itemId.slice(0, 8)}…`}
                 accent="emerald"
                 flush
-                bodyStyle={height ? { height } : { height: 'clamp(380px, 46vh, 500px)' }}
+                bodyStyle={{
+                  ...(height ? { height } : { height: 'clamp(380px, 46vh, 500px)' }),
+                  // The colour the form's white page is mapped onto (see below).
+                  background: FORM_BG,
+                  // Keep the blend below confined to this box, so it cannot pick
+                  // up the page's background gradients.
+                  isolation: 'isolate',
+                }}
               >
                 {!loaded && (
                   <div className="absolute inset-0 z-10 grid place-items-center bg-ink-900">
@@ -76,20 +88,26 @@ export function Survey() {
                     </div>
                   </div>
                 )}
-                {/* Survey123 only ships a light theme and we cannot restyle a
-                    cross-origin document, so the frame is inverted instead. The
-                    hue-rotate puts the hues back where they started, which keeps
-                    the green section headings green while the white page turns
-                    near-black. bg-white is deliberate: it inverts to #141414 and
-                    covers the gap before the form paints. */}
+                {/* Survey123 ships no dark theme and the document is cross-origin,
+                    so its CSS is out of reach -- the frame is recoloured instead.
+                    invert(1) turns the white page pure black and darkens the text;
+                    hue-rotate puts the hues back where they started, so the green
+                    headings stay green; screen over an opaque backdrop then maps
+                    black to exactly FORM_BG while leaving the light text alone.
+                    The negative top crops the theme band above the first question. */}
                 <iframe
                   ref={frameRef}
                   name="survey123webform"
                   title={survey.title}
                   src={embedUrl}
                   onLoad={() => setLoaded(true)}
-                  className="absolute inset-0 h-full w-full border-0 bg-white"
-                  style={{ filter: 'invert(0.92) hue-rotate(180deg)' }}
+                  className="absolute inset-x-0 w-full border-0"
+                  style={{
+                    top: -THEME_BAND,
+                    height: `calc(100% + ${THEME_BAND}px)`,
+                    filter: 'invert(1) hue-rotate(180deg)',
+                    mixBlendMode: 'screen',
+                  }}
                   allow="geolocation https://survey123.arcgis.com; camera https://survey123.arcgis.com; microphone https://survey123.arcgis.com"
                 />
               </BrowserChrome>
