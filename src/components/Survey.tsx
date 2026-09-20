@@ -99,10 +99,13 @@ export function Survey() {
                     invert(1) turns the white page pure black and the dark text
                     light; hue-rotate returns every hue to where it started, which
                     is what keeps the headings, Submit button and progress bar
-                    green rather than washing them to white; brightness finishes
-                    the body text at white and, because it multiplies, leaves black
-                    at black; screen over an opaque backdrop then maps that black
-                    to exactly FORM_BG and leaves the white text alone. */}
+                    green rather than washing them to white; brightness takes the
+                    body text, hints and placeholders all the way to white and,
+                    because it multiplies, leaves black at black; saturate then
+                    puts back the chroma that brightness washed out, which is what
+                    lets the text go white without the green going with it --
+                    saturate does nothing to neutrals. screen over an opaque
+                    backdrop finally maps that black to exactly FORM_BG. */}
                 <iframe
                   ref={frameRef}
                   name="survey123webform"
@@ -113,7 +116,7 @@ export function Survey() {
                   style={{
                     top: -TOP_INSET,
                     height: `calc(100% + ${TOP_INSET}px)`,
-                    filter: 'invert(1) hue-rotate(180deg) brightness(1.35)',
+                    filter: 'invert(1) hue-rotate(180deg) brightness(1.75) saturate(1.9)',
                     mixBlendMode: 'screen',
                   }}
                   allow="geolocation https://survey123.arcgis.com; camera https://survey123.arcgis.com; microphone https://survey123.arcgis.com; storage-access https://survey123.arcgis.com"

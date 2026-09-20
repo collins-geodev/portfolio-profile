@@ -1,0 +1,12 @@
+# Never apply line-ending conversion to binary assets. Without this, git's
+# text heuristics warned about CRLF conversion on the CV PDF, which would
+# corrupt it.
+*.pdf   -text
+*.jpg   -text
+*.jpeg  -text
+*.png   -text
+*.webp  -text
+*.gif   -text
+*.ico   -text
+*.woff  -text
+*.woff2 -text
