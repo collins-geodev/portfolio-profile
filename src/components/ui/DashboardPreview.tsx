@@ -243,7 +243,7 @@ function AssetPreview() {
       <div className="flex flex-col gap-2.5">
         <div className="grid grid-cols-3 gap-2">
           {[
-            { v: '20,641', k: 'Transformers' },
+            { v: '20,000+', k: 'Transformers' },
             { v: '23', k: 'Data layers' },
             { v: '99.9%', k: 'Uptime' },
           ].map((s) => (
