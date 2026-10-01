@@ -585,19 +585,6 @@ export const experience: Role[] = [
       'Integrated geological field data into ArcGIS for spatial analysis and mapping of prospective zones for exploration and drilling teams.',
     ],
   },
-  {
-    title: 'GIS Technician',
-    company: 'Spatial Technologies Limited',
-    location: 'Nigeria',
-    period: 'Jan 2005 — May 2010',
-    note: 'Telecom & infrastructure mapping',
-    points: [
-      'Spatial ETL and QA.',
-      'GPS/GNSS field campaigns and post-processing.',
-      'Geodatabase maintenance, data migration and topology validation.',
-      'Network/proximity analysis for telecom and infrastructure projects.',
-    ],
-  },
 ]
 
 /** The CV's closing "Across roles" note: work that spans every position above. */
@@ -625,6 +612,8 @@ export const education = [
 ]
 
 export const certifications = [
+  { name: 'Data Science & Machine Learning', issuer: 'Edureka', year: '2024' },
+  { name: 'Deep Learning', issuer: 'Edureka', year: '2024' },
   { name: 'Python & SQL for Data Science', issuer: 'Edureka', year: '2024' },
   { name: 'Tableau for Data Visualization', issuer: 'Edureka', year: '2024' },
   {
