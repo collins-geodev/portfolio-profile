@@ -1,8 +1,9 @@
 # Collins Anyanwu — Portfolio
 
-Personal portfolio of **Collins Anyanwu**, a GIS Developer & Enterprise Administrator with 19+
-years across geospatial delivery, enterprise data platforms and automation in energy and
-infrastructure — ArcGIS Enterprise, PostgreSQL/PostGIS, Python and AWS.
+Personal portfolio of **Collins Anyanwu**, a Senior Geodatabase & GIS Engineer — enterprise
+geodatabase administration across Microsoft SQL Server, Oracle Spatial and PostgreSQL/PostGIS,
+ArcGIS Pro, ArcMap and ArcGIS Enterprise, utility network data for ADMS, and Python/ArcPy, FME
+and FastAPI automation.
 
 🔗 **Live:** https://portfolio-collins-anyanwu.vercel.app
 

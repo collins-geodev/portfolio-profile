@@ -11,6 +11,8 @@ import {
   ShieldCheck,
   Workflow,
   Layers,
+  Network,
+  FlaskConical,
 } from 'lucide-react'
 
 /* ------------------------------------------------------------------ */
@@ -21,25 +23,28 @@ export const profile = {
   name: 'Collins Anyanwu',
   firstName: 'Collins',
   lastName: 'Anyanwu',
-  title: 'GIS Developer & Enterprise Administrator',
-  subtitle: 'Enterprise GIS · Spatial Databases · Python Automation',
+  title: 'Senior Geodatabase & GIS Engineer',
+  subtitle: 'Product Engineering · SQL Server, Oracle & PostGIS · ArcGIS Enterprise',
   roles: [
-    'GIS Developer & Enterprise Administrator',
-    'Spatial Database Administrator',
-    'Web GIS & REST API Engineer',
-    'Spatial ETL & Python Automation',
-    'Enterprise GIS Solutions Architect',
+    'Senior Geodatabase & GIS Engineer',
+    'Enterprise Geodatabase Administrator',
+    'Utility Network & ADMS Data Engineer',
+    'Python/ArcPy & FME Automation',
+    'Versioned REST API (FastAPI) Developer',
   ],
   tagline: 'Turning spatial data into decisions that power millions.',
   availability: 'Open to Remote & International Opportunities',
   summary:
-    'GIS and spatial database specialist with 19+ years across geospatial delivery, ' +
-    'enterprise data platforms and automation in energy and infrastructure. A geologist ' +
-    "by training (B.Tech Geology; Master’s in GIS), I work across ArcGIS Enterprise and " +
-    'Online, PostgreSQL/PostGIS, Python and AWS — administering mission-critical spatial ' +
-    'databases at 99.9% uptime and improving query performance by 50%. I combine secure ' +
-    'Web GIS architecture, role-based access, spatial ETL and data governance with ' +
-    'multidisciplinary team leadership to deliver enterprise GIS solutions teams can rely on.',
+    'Enterprise geodatabase specialist with strong DBMS skills across Microsoft SQL Server, ' +
+    'Oracle Spatial and PostgreSQL/PostGIS, implementing ArcGIS Pro, ArcMap and ArcGIS ' +
+    "Enterprise solutions. I prepare and maintain the electric utility network model that feeds " +
+    "Ikeja Electric's ADMS, validate connectivity and topology, produce network diagrams " +
+    '(schematics), and was part of the ADMS rollout. I gather user requirements, design data ' +
+    'models, manage geodatabase versioning and replication, publish data, map, geodata and OGC ' +
+    '(WFS) services to ArcGIS Enterprise and Online, and support users. I boosted database ' +
+    'performance by 50%, use partitioning, automate with Python/ArcPy and FME, and build ' +
+    'versioned FastAPI REST/JSON APIs — with test plans, automated and regression testing, ' +
+    'release work and AI coding tools.',
   location: 'Lagos, Nigeria · Open to Relocation',
 }
 
@@ -53,7 +58,7 @@ export const contact = {
   github: 'https://github.com/collins-geodev',
   githubLabel: 'github.com/collins-geodev',
   githubUser: 'collins-geodev',
-  resume: 'resume/Collins_Anyanwu_GIS_Enterprise_Administrator_CV.pdf',
+  resume: 'resume/Collins_Anyanwu_Senior_Geodatabase_GIS_Engineer_CV.pdf',
 }
 
 /* ------------------------------------------------------------------ */
@@ -72,14 +77,14 @@ export const heroStats: Stat[] = [
   { value: 19, suffix: '+', label: 'Years Experience', icon: Gauge },
   { value: 3800, suffix: '+ km', label: 'Network Managed', icon: MapPinned },
   { value: 1, suffix: 'M+', label: 'Customers Served', icon: Globe2 },
-  { value: 20641, suffix: '+', label: 'Assets Governed', icon: Boxes },
+  { value: 20000, suffix: '+', label: 'Assets Governed', icon: Boxes },
 ]
 
 export const impactStats: Stat[] = [
   { value: 19, suffix: '+', label: 'Years in GIS & Data', icon: Gauge },
   { value: 3800, suffix: '+ km', label: 'Distribution Network', icon: MapPinned },
   { value: 1, suffix: 'M+', label: 'Customers Served', icon: Globe2 },
-  { value: 20641, suffix: '+', label: 'Assets Tracked', icon: Boxes },
+  { value: 20000, suffix: '+', label: 'Assets Tracked', icon: Boxes },
   { value: 99.9, suffix: '%', label: 'Database Uptime', icon: ShieldCheck },
   { value: 23, suffix: '', label: 'Geospatial Layers', icon: Layers },
 ]
@@ -89,14 +94,14 @@ export const impactStats: Stat[] = [
 /* ------------------------------------------------------------------ */
 
 export const competencies: { label: string; icon: LucideIcon }[] = [
-  { label: 'Enterprise GIS Administration (ArcGIS Enterprise / Online)', icon: MapPinned },
-  { label: 'PostgreSQL / PostGIS Administration & Migration', icon: Database },
-  { label: 'Spatial SQL, Indexing & Query Optimisation', icon: Gauge },
-  { label: 'Python Automation (ArcPy, GeoPandas) & Spatial ETL', icon: Workflow },
-  { label: 'Secure Web GIS & REST API Integration', icon: Globe2 },
-  { label: 'Role-Based Access, SSO & Data Governance', icon: ShieldCheck },
-  { label: 'Dashboards & BI Reporting', icon: BarChart3 },
-  { label: 'Cloud Delivery (AWS, Docker, CI/CD)', icon: Cloud },
+  { label: 'Enterprise Geodatabase Administration (SQL Server, Oracle Spatial, PostGIS, ArcSDE)', icon: Database },
+  { label: 'Geodatabase Versioning, Replication & Multi-User Access (RBAC, SSO)', icon: ShieldCheck },
+  { label: 'Database Design, Partitioning, Query Tuning & Migration', icon: Gauge },
+  { label: 'Topology, Connectivity & Network Diagrams (Schematics)', icon: Network },
+  { label: 'Utility Network Data for ADMS & Geodatabase Data Standards', icon: Layers },
+  { label: 'Publishing Data & Services (ArcGIS Enterprise / Online, OGC WFS)', icon: Globe2 },
+  { label: 'Python/ArcPy & FME Automation · Versioned REST APIs (FastAPI)', icon: Workflow },
+  { label: 'Test Plans, Automated & Regression Testing & Release', icon: FlaskConical },
 ]
 
 /* ------------------------------------------------------------------ */
@@ -112,90 +117,104 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: 'GIS Platforms & Applications',
-    icon: Globe2,
-    accent: 'from-brand-cyan to-brand-teal',
-    skills: [
-      'ArcGIS Enterprise',
-      'ArcGIS Online',
-      'ArcGIS Pro',
-      'ArcGIS Dashboards',
-      'Survey123',
-      'QGIS',
-      'Web GIS',
-      'REST API Integration',
-      'GPS / GNSS Capture',
-    ],
-  },
-  {
-    title: 'Spatial Databases',
+    title: 'Databases',
     icon: Database,
     accent: 'from-brand-emerald to-brand-teal',
     skills: [
-      'PostgreSQL / PostGIS',
-      'Spatial SQL',
-      'Indexing & Query Optimisation',
-      'Database Migration',
+      'Microsoft SQL Server',
       'Oracle Spatial',
-      'SQL Server',
-      'Spatial Data Modelling',
+      'PostgreSQL / PostGIS',
+      'Enterprise Geodatabase Administration',
+      'Versioning & Replication',
+      'Data Modelling & Database Design',
+      'Table Partitioning',
+      'Security & Access Control',
+      'Performance Tuning',
+      'Migration',
     ],
   },
   {
-    title: 'Scripting & Spatial ETL',
+    title: 'GIS & Geospatial',
+    icon: Globe2,
+    accent: 'from-brand-cyan to-brand-teal',
+    skills: [
+      'ArcGIS Pro',
+      'ArcMap',
+      'ArcGIS Enterprise',
+      'ArcGIS Online',
+      'Geodata Services',
+      'OGC Services (WFS)',
+      'ArcSDE',
+      'FME (Safe Software)',
+      'QGIS',
+      'Survey123',
+      'Topology & Connectivity Validation',
+      'Network Diagrams (Schematics)',
+      'CRS, Reprojection & Vertical Datums',
+      'Georeferencing',
+      'Metadata & Symbology',
+      'Large Raster Processing (GeoTIFF/COG)',
+    ],
+  },
+  {
+    title: 'SQL & Scripting',
     icon: Code2,
     accent: 'from-brand-violet to-brand-indigo',
     skills: [
       'Python',
       'ArcPy',
       'GeoPandas',
-      'Shapely',
+      'PyQGIS',
       'Pandas',
+      'Shapely',
+      'FastAPI',
       'SQL',
-      'FME (Safe Software)',
-      'Cloud ETL & Data Warehousing',
       'R',
+      'Workflow Automation',
+      'Data Validation',
+      'Geoprocessing',
     ],
   },
   {
-    title: 'Security & Data Governance',
-    icon: ShieldCheck,
+    title: 'Web Mapping',
+    icon: MapPinned,
     accent: 'from-brand-sky to-brand-cyan',
     skills: [
-      'Role-Based Access Control',
-      'Single Sign-On',
-      'Data Quality Assurance',
-      'Topology Validation',
-      'Enterprise Spatial Data Governance',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Leaflet.js',
+      'Versioned REST APIs (JSON)',
+      'Python / FastAPI',
+      'Internal Web-Map Data Products',
     ],
   },
   {
-    title: 'Cloud & Delivery',
+    title: 'Cloud & DevOps',
     icon: Cloud,
     accent: 'from-brand-indigo to-brand-violet',
     skills: [
       'AWS (S3, EC2, RDS)',
       'Docker',
-      'Git / GitHub',
       'CI/CD (GitHub Actions)',
-      'Vercel',
-      'Agile Delivery',
-      'Technical Leadership & Training',
+      'Git / GitHub',
+      'Test Plans',
+      'Automated, Functional & Regression Testing',
+      'Release',
+      'Server Administration (PostGIS & AWS EC2)',
+      'AI Coding Tools (GitHub Copilot, Cursor, Claude)',
     ],
   },
   {
-    title: 'Analytics, BI & Web',
+    title: 'Reporting & BI',
     icon: BarChart3,
     accent: 'from-brand-teal to-brand-sky',
     skills: [
+      'ArcGIS Dashboards',
       'Power BI',
       'Tableau',
-      'Plotly',
-      'Next.js',
-      'TypeScript',
-      'React',
-      'Leaflet.js',
-      'Supabase',
+      'Advanced Excel (Power Query, Power Pivot, VBA)',
+      'Microsoft 365',
     ],
   },
 ]
@@ -523,11 +542,13 @@ export const experience: Role[] = [
     current: true,
     note: "Nigeria's largest electricity distributor",
     points: [
-      'Govern network, asset, customer and operational data in PostgreSQL/PostGIS for a 3,800+ km electricity distribution grid serving 1M+ customers, maintaining the enterprise platform the business runs its spatial analysis on.',
-      'Architected and led delivery of a secure Web GIS platform for 20,641+ assets across 23 data layers, combining Next.js, TypeScript, PostGIS and REST APIs with role-based access and single sign-on.',
-      'Integrated SCADA, billing and field-capture data through automated Python (ArcPy, GeoPandas) and FME pipelines, cutting manual processing by 67% and making data quality repeatable.',
-      'Translated outage data into real-time ArcGIS dashboards for executive and operational decisions, reducing mean incident-response time by 40%.',
-      'Digitised 8,513+ field inspections with Survey123 and fed GIS outputs into Power BI and real-time KPI platforms, accelerating capture by 45% and eliminating paper-based errors.',
+      'Govern the multi-user enterprise geodatabase for a 3,800+ km distribution network serving 1M+ customers, setting and documenting data standards, automated validation rules, QA workflows, and CRS management across 23 spatial data layers.',
+      'Prepare and maintain the electric utility network model and data that feed the advanced distribution management system (ADMS) on parts of the network, validating connectivity and topology so the ADMS model is correct; part of the ADMS implementation and rollout team.',
+      'Gather user requirements and produce network diagrams (schematics) of the electrical distribution network.',
+      'Administer a PostGIS-backed asset-management platform that is the single source of truth for 20,000+ assets, with role-based access control and single sign-on protecting sensitive operational data.',
+      'Cut manual data-processing effort by 67% by engineering FME and Python (ArcPy, GeoPandas) ETL pipelines that integrate billing and field-capture data with automated validation.',
+      'Reduced mean incident-response time by 40% with real-time outage dashboards; deliver the maps, dashboards, and reporting tools (ArcGIS Dashboards, Power BI) used by executives and planning teams.',
+      'Accelerated field data collection by 45% across 8,500+ inspections by rolling out Esri Survey123, eliminating paper-based transcription errors at source.',
     ],
   },
   {
@@ -537,22 +558,20 @@ export const experience: Role[] = [
     period: 'Sep 2016 — Oct 2017',
     note: 'Utility & infrastructure consultancy',
     points: [
-      'Led 8 GIS professionals across concurrent Agile project streams, establishing delivery standards and shipping enterprise geospatial solutions for utility and infrastructure clients across West Africa.',
-      'Designed scalable cloud-based spatial ETL and data-warehousing pipelines for large-volume processing.',
-      'Used Power BI and Tableau to communicate spatial and operational results to client stakeholders in a form they could act on.',
-      'Mentored staff through structured training in GIS technologies and database management, improving delivery consistency and technical quality.',
+      'Led a team of 8 GIS professionals across concurrent project streams, delivering geospatial solutions on schedule for utility and infrastructure clients across West Africa.',
+      'Designed cloud-based ETL pipelines for large-volume geospatial data processing and warehousing.',
     ],
   },
   {
     title: 'GIS / Database Specialist',
     company: 'SpatialMatrix Ltd',
-    location: 'Lagos, Nigeria',
+    location: 'Abeokuta, Ogun State, Nigeria',
     period: 'Oct 2012 — Aug 2016',
     note: 'Oil & gas and infrastructure clients',
     points: [
-      'Migrated and administered PostgreSQL/PostGIS systems for oil & gas and infrastructure clients, sustaining 99.9% uptime across mission-critical environments.',
-      'Optimised complex spatial SQL queries and indexing strategies, improving geospatial query performance by 50% and enabling more efficient spatial analysis.',
-      'Translated raw spatial data into interactive dashboards, analytical outputs and cartographic products, communicating results in a form clients could use for decisions.',
+      'Boosted database performance by 50% by optimizing complex spatial SQL queries and indexing strategies.',
+      'Sustained 99.9% uptime across mission-critical production environments by migrating and administering enterprise PostgreSQL/PostGIS databases for oil & gas and infrastructure clients.',
+      'Designed database architecture and delivered spatial analytics, dashboards, and cartography that turned raw geological and spatial data into decision-ready insight for oil & gas, NGO, and infrastructure clients.',
     ],
   },
   {
@@ -562,8 +581,8 @@ export const experience: Role[] = [
     period: 'Jun 2010 — Aug 2012',
     note: 'Hydrocarbon exploration',
     points: [
-      'Led geological surveys and GPS-based collection for hydrocarbon exploration, producing analysis-ready datasets for resource estimation and prospect appraisal.',
-      'Built structural and stratigraphic maps in ArcGIS that guided drilling-target selection and reserve evaluation.',
+      'Led geological field surveys and GPS-based data collection for hydrocarbon exploration, producing validated datasets that underpinned resource estimation and prospect appraisal.',
+      'Integrated geological field data into ArcGIS for spatial analysis and mapping of prospective zones for exploration and drilling teams.',
     ],
   },
   {
@@ -573,12 +592,22 @@ export const experience: Role[] = [
     period: 'Jan 2005 — May 2010',
     note: 'Telecom & infrastructure mapping',
     points: [
-      'Built spatial ETL workflows for ingestion, transformation and quality assurance, supporting reliable analysis-ready dataset delivery.',
-      'Performed network, proximity and spatial-modelling analyses that informed planning across telecom and infrastructure projects.',
-      'Managed GPS/GNSS collection, post-processing, migration and topology validation for large-scale mapping.',
+      'Spatial ETL and QA.',
+      'GPS/GNSS field campaigns and post-processing.',
+      'Geodatabase maintenance, data migration and topology validation.',
+      'Network/proximity analysis for telecom and infrastructure projects.',
     ],
   },
 ]
+
+/** The CV's closing "Across roles" note: work that spans every position above. */
+export const acrossRoles =
+  'Designed geodatabase data models; worked with Microsoft SQL Server alongside ' +
+  'PostgreSQL/PostGIS enterprise geodatabases; managed geodatabase versioning and replication; ' +
+  'published data, geodata and OGC WFS services to ArcGIS Enterprise and ArcGIS Online; carried ' +
+  'out software testing and release work for the GIS tools and APIs I build, writing test plans ' +
+  'and running automated, functional and regression tests; administered PostGIS and AWS EC2 ' +
+  'servers; and provided GIS user support and troubleshooting.'
 
 /* ------------------------------------------------------------------ */
 /*  Education & certifications                                        */
@@ -596,8 +625,6 @@ export const education = [
 ]
 
 export const certifications = [
-  { name: 'Data Science & Machine Learning', issuer: 'Edureka', year: '2024' },
-  { name: 'Deep Learning', issuer: 'Edureka', year: '2024' },
   { name: 'Python & SQL for Data Science', issuer: 'Edureka', year: '2024' },
   { name: 'Tableau for Data Visualization', issuer: 'Edureka', year: '2024' },
   {
@@ -629,7 +656,7 @@ export const survey = {
   hide: 'navbar,header,description,footer',
   metrics: [
     { value: '4', label: 'Guided pages' },
-    { value: '8,513+', label: 'Inspections' },
+    { value: '8,500+', label: 'Inspections' },
     { value: '45%', label: 'Faster capture' },
   ],
   features: [

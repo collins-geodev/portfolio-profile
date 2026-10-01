@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
-import { Briefcase, MapPin, ChevronRight } from 'lucide-react'
-import { experience } from '../data/content'
+import { Briefcase, MapPin, ChevronRight, Layers } from 'lucide-react'
+import { experience, acrossRoles } from '../data/content'
 import { SectionHeading } from './ui/SectionHeading'
 import { Reveal } from './ui/Reveal'
 
@@ -91,6 +91,16 @@ export function Experience() {
             ))}
           </div>
         </div>
+
+        <Reveal className="mt-9 pl-12 sm:pl-16">
+          <div className="rounded-2xl border border-brand-teal/20 bg-brand-teal/[0.05] p-5 sm:p-6">
+            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-brand-teal">
+              <Layers className="h-4 w-4" />
+              Across roles
+            </div>
+            <p className="mt-2 text-sm leading-relaxed text-slate-400">{acrossRoles}</p>
+          </div>
+        </Reveal>
       </div>
     </section>
   )

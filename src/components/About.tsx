@@ -19,7 +19,7 @@ export function About() {
               <span className="text-gradient">Africa&apos;s largest utility</span>
             </>
           }
-          subtitle="Geologist by training, GIS developer and enterprise administrator by craft — building and governing the systems that keep a 1M+ customer network running."
+          subtitle="Geologist by training, geodatabase and GIS engineer by craft — building and governing the systems that keep a 1M+ customer network running."
         />
 
         <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_1fr]">
