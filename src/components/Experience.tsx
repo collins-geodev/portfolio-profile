@@ -20,7 +20,7 @@ export function Experience() {
           eyebrow="Career Journey"
           title={
             <>
-              19+ years across <span className="text-gradient">utility, oil &amp; gas &amp; geoscience</span>
+              A career across <span className="text-gradient">utility, oil &amp; gas &amp; geoscience</span>
             </>
           }
           subtitle="From geological field surveys to governing the geospatial backbone of Nigeria's largest electricity distributor."

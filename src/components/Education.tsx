@@ -44,8 +44,8 @@ export function Education() {
                   <span className="text-sm font-semibold">Professional standing</span>
                 </div>
                 <p className="mt-2 text-sm text-slate-400">
-                  GISP certification in progress with GISCI — advancing formal recognition of 19+
-                  years of applied GIS and geodatabase practice.
+                  GISP certification in progress with GISCI — advancing formal recognition of
+                  applied GIS and geodatabase practice across utility, oil &amp; gas and geoscience.
                 </p>
               </div>
             </Reveal>

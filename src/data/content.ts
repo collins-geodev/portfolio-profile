@@ -74,14 +74,14 @@ export interface Stat {
 }
 
 export const heroStats: Stat[] = [
-  { value: 19, suffix: '+', label: 'Years Experience', icon: Gauge },
+  { value: 50, suffix: '%', label: 'Faster Database Queries', icon: Gauge },
   { value: 3800, suffix: '+ km', label: 'Network Managed', icon: MapPinned },
   { value: 1, suffix: 'M+', label: 'Customers Served', icon: Globe2 },
   { value: 20000, suffix: '+', label: 'Assets Governed', icon: Boxes },
 ]
 
 export const impactStats: Stat[] = [
-  { value: 19, suffix: '+', label: 'Years in GIS & Data', icon: Gauge },
+  { value: 67, suffix: '%', label: 'Less Manual Processing', icon: Workflow },
   { value: 3800, suffix: '+ km', label: 'Distribution Network', icon: MapPinned },
   { value: 1, suffix: 'M+', label: 'Customers Served', icon: Globe2 },
   { value: 20000, suffix: '+', label: 'Assets Tracked', icon: Boxes },
