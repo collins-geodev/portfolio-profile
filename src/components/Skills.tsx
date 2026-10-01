@@ -42,7 +42,9 @@ export function Skills() {
             <motion.div
               key={cat.title}
               variants={staggerItem}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-card"
+              className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-card ${
+                cat.wide ? 'sm:col-span-2 lg:col-span-3' : ''
+              }`}
             >
               <div
                 className={`pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br ${cat.accent} opacity-[0.14] blur-2xl transition-opacity duration-300 group-hover:opacity-25`}

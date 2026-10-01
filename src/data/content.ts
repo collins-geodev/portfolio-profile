@@ -13,6 +13,7 @@ import {
   Layers,
   Network,
   FlaskConical,
+  Brain,
 } from 'lucide-react'
 
 /* ------------------------------------------------------------------ */
@@ -44,7 +45,7 @@ export const profile = {
     '(WFS) services to ArcGIS Enterprise and Online, and support users. I boosted database ' +
     'performance by 50%, use partitioning, automate with Python/ArcPy and FME, and build ' +
     'versioned FastAPI REST/JSON APIs — with test plans, automated and regression testing, ' +
-    'release work and AI coding tools.',
+    'release work and AI tools (LLMs, GeoAI).',
   location: 'Lagos, Nigeria · Open to Relocation',
 }
 
@@ -102,6 +103,7 @@ export const competencies: { label: string; icon: LucideIcon }[] = [
   { label: 'Publishing Data & Services (ArcGIS Enterprise / Online, OGC WFS)', icon: Globe2 },
   { label: 'Python/ArcPy & FME Automation · Versioned REST APIs (FastAPI)', icon: Workflow },
   { label: 'Test Plans, Automated & Regression Testing & Release', icon: FlaskConical },
+  { label: 'GeoAI (ML & Deep Learning), LLMs, Prompt Engineering & AI Coding Tools', icon: Brain },
 ]
 
 /* ------------------------------------------------------------------ */
@@ -112,6 +114,8 @@ export interface SkillCategory {
   title: string
   icon: LucideIcon
   accent: string
+  /** Span the full row, for a group that would otherwise sit alone on the last line. */
+  wide?: boolean
   skills: string[]
 }
 
@@ -202,7 +206,6 @@ export const skillCategories: SkillCategory[] = [
       'Automated, Functional & Regression Testing',
       'Release',
       'Server Administration (PostGIS & AWS EC2)',
-      'AI Coding Tools (GitHub Copilot, Cursor, Claude)',
     ],
   },
   {
@@ -215,6 +218,21 @@ export const skillCategories: SkillCategory[] = [
       'Tableau',
       'Advanced Excel (Power Query, Power Pivot, VBA)',
       'Microsoft 365',
+    ],
+  },
+  {
+    title: 'AI / GeoAI',
+    icon: Brain,
+    accent: 'from-brand-violet to-brand-cyan',
+    wide: true,
+    skills: [
+      'Machine Learning on Spatial Data',
+      'Deep Learning on Imagery',
+      'LLMs',
+      'Prompt Engineering',
+      'Generative AI',
+      'AI App / Chatbot Development',
+      'AI Coding Tools (GitHub Copilot, Cursor, Claude)',
     ],
   },
 ]
