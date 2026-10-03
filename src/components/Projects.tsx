@@ -272,7 +272,7 @@ export function Projects() {
           {/* GitHub profiles CTA */}
           <Reveal className="mt-14 text-center">
             <p className="text-sm text-slate-400">
-              More builds, experiments and source code live on my GitHub profiles:
+              More builds, experiments and source code live on my GitHub profile:
             </p>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
               <a
@@ -283,15 +283,6 @@ export function Projects() {
               >
                 <Github className="h-4 w-4" />
                 @collins-geodev
-              </a>
-              <a
-                href="https://github.com/Collins76"
-                target="_blank"
-                rel="noreferrer"
-                className="btn-ghost"
-              >
-                <Github className="h-4 w-4" />
-                @Collins76
               </a>
             </div>
           </Reveal>
