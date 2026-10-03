@@ -596,7 +596,7 @@ export const experience: Role[] = [
     title: 'Geologist',
     company: 'Earth-Source Hydrocarbon',
     location: 'Nigeria',
-    period: 'Jun 2010 — Aug 2012',
+    period: 'Earlier career',
     note: 'Hydrocarbon exploration',
     points: [
       'Led geological field surveys and GPS-based data collection for hydrocarbon exploration, producing validated datasets that underpinned resource estimation and prospect appraisal.',
