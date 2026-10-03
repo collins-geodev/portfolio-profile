@@ -386,7 +386,7 @@ export const projects: Project[] = [
     tagline: 'Real-time GIS team performance & productivity',
     description:
       'Real-time GIS team performance dashboard tracking operational KPIs, task-completion rates and field productivity metrics, with 250+ commits of active development.',
-    tags: ['Next.js', 'Firebase', 'TypeScript', 'Tailwind CSS'],
+    tags: ['Next.js', 'Convex', 'TypeScript', 'Tailwind CSS'],
     repoUrl: 'https://github.com/collins-geodev/gis-kpi',
   },
   {
